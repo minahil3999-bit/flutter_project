@@ -69,9 +69,10 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  late PageController _pageController;
+  late PageController _pageController; // left/ right movement
   int currentPage = 0;
 
+// Quotes Carousel
   final List<String> quotes = [
     "Believe you can and you're halfway there.",
     "Every moment is a fresh beginning.",
@@ -171,7 +172,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Next / Get Started Button
+                //Next/ Get Started Button
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),

@@ -25,11 +25,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     }).toList();
 
     // Sorting
-    if (_sortType == 'Alphabetically') {
-      quotes.sort((a, b) => a.text.toLowerCase().compareTo(b.text.toLowerCase()));
-    } else if (_sortType == 'Favorite') {
-      quotes.sort((a, b) => (b.isFavorite ? 1 : 0).compareTo(a.isFavorite ? 1 : 0));
-    }
+    // Sorting
+if (_sortType == 'Alphabetically') {
+  quotes.sort((a, b) => a.text.toLowerCase().compareTo(b.text.toLowerCase()));
+} else if (_sortType == 'By Length') {
+  quotes.sort((a, b) => a.text.length.compareTo(b.text.length)); // Shortest first
+}
 
     return Scaffold(
       appBar: AppBar(
@@ -51,17 +52,18 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ),
             ),
           ),
-          DropdownButton<String>(
-            value: _sortType,
-            items: ['Alphabetically', 'Latest']
-                .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                .toList(),
-            onChanged: (val) {
-              setState(() {
-                _sortType = val!;
-              });
-            },
-          ),
+         DropdownButton<String>(
+  value: _sortType,
+  items: ['Alphabetically', 'By Length'] // Latest removed
+      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+      .toList(),
+  onChanged: (val) {
+    setState(() {
+      _sortType = val!;
+    });
+  },
+),
+
         ],
       ),
       body: quotes.isEmpty

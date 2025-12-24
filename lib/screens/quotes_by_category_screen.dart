@@ -28,7 +28,7 @@ class _QuotesByCategoryScreenState
     List<QuoteModel> quotes =
         provider.getByCategory(widget.category);
 
-    // 🔍 Search filter
+    // Search filter
     if (_searchQuery.isNotEmpty) {
       quotes = quotes
           .where((q) =>
@@ -41,7 +41,7 @@ class _QuotesByCategoryScreenState
           .toList();
     }
 
-    // 🔃 Sorting (NO createdAt used)
+    // Sorting 
     quotes.sort((a, b) {
       switch (_sortType) {
         case 'Favorite':
@@ -64,7 +64,7 @@ class _QuotesByCategoryScreenState
           preferredSize: const Size.fromHeight(110),
           child: Column(
             children: [
-              // 🔍 Search bar
+              // Search bar
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 16, vertical: 8),
@@ -84,7 +84,7 @@ class _QuotesByCategoryScreenState
                 ),
               ),
 
-              // 🔃 Sorting dropdown
+              // Sorting dropdown
               Padding(
                 padding:
                     const EdgeInsets.only(right: 16, bottom: 8),
@@ -114,7 +114,7 @@ class _QuotesByCategoryScreenState
         ),
       ),
 
-      // 📃 Quotes list
+      //  Quotes list
       body: provider.isLoading
           ? const Center(child: CircularProgressIndicator())
           : quotes.isEmpty
@@ -190,7 +190,7 @@ class _QuotesByCategoryScreenState
                   },
                 ),
 
-      // ➕ Add quote (Custom only)
+      // Add quote (Custom only)
       floatingActionButton: widget.category == 'Custom'
           ? FloatingActionButton(
               child: const Icon(Icons.add),
@@ -214,7 +214,7 @@ class _QuotesByCategoryScreenState
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // ❤️ Favorite
+            // Favorite
             IconButton(
               icon: Icon(
                 quote.isFavorite
@@ -226,7 +226,7 @@ class _QuotesByCategoryScreenState
                   provider.toggleFavorite(quote.id),
             ),
 
-            // 📋 Copy
+            // Copy
             IconButton(
               icon: const Icon(Icons.copy),
               onPressed: () {

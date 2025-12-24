@@ -96,7 +96,7 @@ class QuoteProvider extends ChangeNotifier {
 
     notifyListeners();
   }
-  // ✅ Add remove rating feature
+
   Future<void> removeRating(String id) async {
     final index = _quotes.indexWhere((q) => q.id == id);
     if (index == -1) return;
